@@ -31,7 +31,7 @@ h1 {
 
 }
 /* Style du plein ecran (Modal) */
-#modal {
+#photo-modal {
     display: none;
     position: fixed;
     z-index: 1000;
@@ -44,7 +44,7 @@ h1 {
     align-items: center;
     flex-direction: column;
 }
-#modal-img {
+#photo-modal img {
     max-width: 90%;
     max-height: 80vh;
     border: 2px solid white;
@@ -80,5 +80,7 @@ h1 {
     color: white;
     cursor: pointer;
 }
+
+
 
 
