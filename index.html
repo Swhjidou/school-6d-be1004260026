@@ -58,6 +58,37 @@
             if (e.target === modal) closeModal();        
         }
 
+        document.addEventListener('keydown', (e) => {
+            if (modele.style.display === "flex") {
+                if (e.key === "ArrowRight") photoSuivante();
+                if (e.key === "ArrowLeft") photoPrecedente();
+                if (e.key === "Escape") fermerPleinEcran();
+            }
+        });
+
+
+        
+        // --- GESTION DU TACTILE (SWIPE) ---
+        modele.addEventListener('touchstart', (e) => {
+            xDebut = e.touches[0].clientX;
+        }, false);
+
+        modele.addEventListener('touchend', (e) => {
+            if (!xDebut) return;
+
+            let xFin = e.changedTouches[0].clientX;
+            let difference = xDebut - xFin;
+
+            // Si le glissement est assez long (plus de 50 pixels)
+            if (Math.abs(difference) > 50) {
+                if (difference > 0) {
+                    photoSuivante(); // Glissé vers la gauche -> Photo suivante
+                } else {
+                    photoPrecedente(); // Glissé vers la droite -> Photo précédente
+                }
+            }
+            xDebut = null; // Réinitialisation
+        }, false);
     </script>
 </body>
 </html>
