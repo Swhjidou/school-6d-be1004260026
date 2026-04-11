@@ -1,15 +1,26 @@
 body {
     font-family: Arial, sans-serif; text-align: center; background-color: #f4f4f4;
+    text-align: center;
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 20px;
 }
 h1 {
-    color: #333;
+    color: #1a73e8;
 }
-.galerie { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; padding: 20px; }
+.galerie { 
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 15px; padding: 20px; 
+    margin-top: 30px;
+}
 .galerie img {
-    width: 300px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0,2s;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border: 5px solid white;
 }
 .galerie img:hover {
     transform: scale(1.05);
