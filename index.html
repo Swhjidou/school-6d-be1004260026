@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
+    <script src="script.js"></script>
     <h1>Bienvennu sur la correction de composition N゜2</h1>
     <p>Cliquer sur une photo pour l'agrandir </p>
     <div class="galerie">
@@ -21,9 +23,9 @@
     </div>
     <div id="modal">
         <span id="close" onclick="closeModal()">&times;</span>
-        <span id="prev" class="nav-btn" onclick="changeSolide(-1)">&times;</span>
-        <img id="model-img" src="" alt="">
-        <span id="next" class="nav-btn" onclick="changeSolide(1)">&times;</span>
+        <span id="prev" class="nav-btn" onclick="changeSlide(-1)">❮</span>
+        <img id="modal-img" src="" alt="">
+        <span id="next" class="nav-btn" onclick="changeSlide(1)">❯</span>
     </div>
 </body>
 </html>
