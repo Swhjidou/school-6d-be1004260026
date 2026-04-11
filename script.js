@@ -8,7 +8,7 @@
 
     function openFull(index) {
         currentIndex = index;
-        modal.style.display = flex; // Pour afficher le model
+        modal.style.display = "flex"; // Pour afficher le model
         modalImg.src = allImages[currentIndex].src // pour charger l'img
     }
 
