@@ -6,6 +6,12 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <h1>Bienvennu sur ma galerie</h1>
+    <p>Scanne pour voir les images</p>
+    <div class="galerie">
+        {% for photo in photos %}
+        <img src="{{url_for('static', filename=images)}}" alt="Photo">
+        {% endfor %}
+    </div>
 </body>
 </html>

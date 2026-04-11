@@ -1,0 +1,16 @@
+body {
+    font-family: Arial, sans-serif; text-align: center; background-color: #f4f4f4;
+}
+h1 {
+    color: #333;
+}
+.galerie { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; padding: 20px; }
+.galerie img {
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0,2s;
+}
+.galerie img:hover {
+    transform: scale(1.05);
+}
