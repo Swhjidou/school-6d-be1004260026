@@ -1,18 +1,22 @@
 <script>
-    window.onload = function() {
+    {/* window.onload = function() {
         images = document.querySelectorAll('.galerie img');
-    };
+    }; */}
 
+    const allImages = document.querySelectorAll('.galerie img');
     let currentIndex = 0;
 
-    function openModal(index) {
+    const modal = document.querySelectorAll("photo-modal");
+    const modalImg = document.getElementById("modal-img");
+
+    function openFull(index) {
         currentIndex = index;
-        document.getElementById("modal").style.display = "flex";
-        updateModal()
+        modal.style.display = flex; // Pour afficher le model
+        modalImg.src = allImages[currentIndex].src // pour charger l'img
     }
 
-    function closeModal() {
-        document.getElementById("modal").style.display = "none";
+    function closeFull() {
+        modal.style.display = "none";
     }
 
     function changeSlide(n) {
