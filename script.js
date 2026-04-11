@@ -1,8 +1,5 @@
 <script>
-    {/* window.onload = function() {
-        images = document.querySelectorAll('.galerie img');
-    }; */}
-
+ 
     const allImages = document.querySelectorAll('.galerie img');
     let currentIndex = 0;
 
@@ -19,14 +16,16 @@
         modal.style.display = "none";
     }
 
-    function changeSlide(n) {
-        currentIndex += n;
+    function changeSlide() {
+        currentIndex ++;
         if (currentIndex >= images.length) currentIndex = 0;
         if (currentIndex < 0) currentIndex = images.length - 1;
-        updateModal()
+        modalImg.src = allImages[currentIndex].src;
     }
 
-    function updateModal() {
-        document.getElementById("modal-img").src = Images[currentIndex].src;
+    // Fermer si on clique sur le fond noir
+    modal.onclick = function(e) {
+        if (e.target === modal) closeFull();        
     }
+
 </script>
