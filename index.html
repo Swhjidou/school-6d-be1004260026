@@ -50,6 +50,13 @@
             modalImg.src = allImages[currentIndex].src;
         }
 
+        function photoSuivante() {
+            changeSlide(1);
+        }
+
+        function photoPrecedente() {
+            changeSlide(-1);
+        }
         // Fermer si on clique sur le fond noir
         modal.onclick = function(e) {
             if (e.target === modal) closeModal();        
@@ -88,31 +95,69 @@
         }, false);
 
 
-        const statusText = document.getElementById("status");
+        // const statusText = document.getElementById("status");
 
-        // التاريخ النهائي: 18 أبريل 2026 على 00:30
-        const targetDate = new Date("2026-04-16T01:15:00");
+        // // التاريخ النهائي: 18 أبريل 2026 على 00:30
+        // const targetDate = new Date("2026-04-16T01:15:00");
 
-        function updateTimer() {
+        // function updateTimer() {
+        //     const now = new Date();
+        //     const diff = targetDate - now;
+
+        //     if (diff <= 0) {
+        //         statusText.innerHTML = "⛔ La page est bloquée définitivement";
+        //         document.body.innerHTML = "<h1 style='text-align:center;color:red;'>⛔ Accès bloqué définitivement</h1>";
+        //         return;
+        //     }
+
+        //     let seconds = Math.floor(diff / 1000) % 60;
+        //     let minutes = Math.floor(diff / 1000 / 60) % 60;
+        //     let hours = Math.floor(diff / 1000 / 60 / 60) % 24;
+        //     let days = Math.floor(diff / 1000 / 60 / 60 / 24);
+
+        //     statusText.innerHTML = `⏳ Blocage dans : ${days}j ${hours}h ${minutes}m ${seconds}s`;
+        // }
+
+        // setInterval(updateTimer, 1000);
+        // updateTimer();
+
+
+
+                // Vérifier si la date de blocage est atteinte
+        function isBlocked() {
+            const blockDate = new Date(2026, 3, 16, 1, 25, 0); // 18 Avril 2026 - 00:30
             const now = new Date();
-            const diff = targetDate - now;
-
-            if (diff <= 0) {
-                statusText.innerHTML = "⛔ La page est bloquée définitivement";
-                document.body.innerHTML = "<h1 style='text-align:center;color:red;'>⛔ Accès bloqué définitivement</h1>";
-                return;
-            }
-
-            let seconds = Math.floor(diff / 1000) % 60;
-            let minutes = Math.floor(diff / 1000 / 60) % 60;
-            let hours = Math.floor(diff / 1000 / 60 / 60) % 24;
-            let days = Math.floor(diff / 1000 / 60 / 60 / 24);
-
-            statusText.innerHTML = `⏳ Blocage dans : ${days}j ${hours}h ${minutes}m ${seconds}s`;
+            return now >= blockDate;
         }
 
-        setInterval(updateTimer, 1000);
-        updateTimer();
+        // Appliquer le blocage
+        function applyBlocking() {
+            const h3 = document.querySelector('h3');
+            const images = document.querySelectorAll('.galerie img');
+            
+            if (isBlocked()) {
+                h3.innerHTML = '🔒 PAGE BLOQUÉE - Accès définitivement interdit depuis le 18/04/2026 🔒';
+                h3.style.color = '#ff0000';
+                h3.style.textDecoration = 'line-through';
+                
+                // Désactiver les images
+                images.forEach(img => {
+                    img.style.opacity = '0.3';
+                    img.style.pointerEvents = 'none';
+                    img.style.cursor = 'not-allowed';
+                });
+            } else {
+                h3.innerHTML = '✅ PAGE ACTIVE - Accès autorisé jusqu\'au 18/04/2026 ✅';
+                h3.style.color = '#00ff00';
+                h3.style.textDecoration = 'none';
+            }
+        }
+
+        // Exécuter au chargement
+        applyBlocking();
+
+        // Vérifier toutes les secondes
+        setInterval(applyBlocking, 1000);
     </script>
 </body>
 </html>
