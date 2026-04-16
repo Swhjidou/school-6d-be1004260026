@@ -8,12 +8,12 @@
 </head>
 <body>
     <h1>▶ Chapitre : Limites et continuités ⏸</h1>
-    <p>Cliquer sur une photo pour l'agrandir </p>
+    <h3>La page Sera blocker le samdi 00:30 </h3>
     <div class="galerie">
-        <img src="static/images/COURCHPLC110426_00001.jpg" 
+        <img src="static/images/COURMCHPLC110426_00001.jpg" 
         alt="Photo 1"
         onclick="openModal(0)">
-        <img src="static/images/COURCHPLC110426_00002.jpg" 
+        <img src="static/images/COURMCHPLC110426_00002.jpg"
         alt="Photo 2"
         onclick="openModal(1)">
     </div>
@@ -56,7 +56,7 @@
         }
 
         document.addEventListener('keydown', (e) => {
-            if (modele.style.display === "flex") {
+            if (modal.style.display === "flex") {
                 if (e.key === "ArrowRight") photoSuivante();
                 if (e.key === "ArrowLeft") photoPrecedente();
                 if (e.key === "Escape") fermerPleinEcran();
@@ -66,11 +66,11 @@
 
         
         // --- GESTION DU TACTILE (SWIPE) ---
-        modele.addEventListener('touchstart', (e) => {
+        modal.addEventListener('touchstart', (e) => {
             xDebut = e.touches[0].clientX;
         }, false);
 
-        modele.addEventListener('touchend', (e) => {
+        modal.addEventListener('touchend', (e) => {
             if (!xDebut) return;
 
             let xFin = e.changedTouches[0].clientX;
@@ -86,6 +86,33 @@
             }
             xDebut = null; // Réinitialisation
         }, false);
+
+
+        const statusText = document.getElementById("status");
+
+        // التاريخ النهائي: 18 أبريل 2026 على 00:30
+        const targetDate = new Date("2026-04-16T01:05:00");
+
+        function updateTimer() {
+            const now = new Date();
+            const diff = targetDate - now;
+
+            if (diff <= 0) {
+                statusText.innerHTML = "⛔ La page est bloquée définitivement";
+                document.body.innerHTML = "<h1 style='text-align:center;color:red;'>⛔ Accès bloqué définitivement</h1>";
+                return;
+            }
+
+            let seconds = Math.floor(diff / 1000) % 60;
+            let minutes = Math.floor(diff / 1000 / 60) % 60;
+            let hours = Math.floor(diff / 1000 / 60 / 60) % 24;
+            let days = Math.floor(diff / 1000 / 60 / 60 / 24);
+
+            statusText.innerHTML = `⏳ Blocage dans : ${days}j ${hours}h ${minutes}m ${seconds}s`;
+        }
+
+        setInterval(updateTimer, 1000);
+        updateTimer();
     </script>
 </body>
 </html>
