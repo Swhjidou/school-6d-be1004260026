@@ -125,7 +125,7 @@
 
                 // Vérifier si la date de blocage est atteinte
         function isBlocked() {
-            const blockDate = new Date(2026, 3, 16, 1, 36, 0); // 18 Avril 2026 - 00:30
+            const blockDate = new Date(2026, 3, 18, 0, 30, 0); // 18 Avril 2026 - 00:30
             const now = new Date();
             return now >= blockDate;
         }
@@ -136,7 +136,7 @@
             const images = document.querySelectorAll('.galerie img');
             
             if (isBlocked()) {
-                h3.innerHTML = '🔒 الصفحة محظورة - تم حظر الوصول إليها بشكل دائم منذ 2026/04/18 🔒';
+                h3.innerHTML = '🔒 الصفحة محظورة - تم حظر الوصول إليها بشكل مؤقت منذ 2026/04/18 🔒';
                 h3.style.color = '#ff0000';
                 h3.style.textDecoration = 'line-through';
                 
